@@ -1,0 +1,42 @@
+<div class="container px-4 py-5" id="hanging-icons">
+<div class="parent">
+  <form action="" [formGroup]="studentForm">
+      <h1>Student Info Form</h1>
+      
+      <label>
+        <input type="text" id="name" formControlName="name">
+        <span>NAME</span>
+      </label>
+
+      <label>
+          <input type="text"  formControlName="roll">
+          <span>ROLL NO</span>
+        </label>
+      
+      <label>
+        <input type="text"  formControlName="fees">
+        <span>Fees</span>
+      </label>
+      
+      <label>
+        <input type="text"  formControlName="medium">
+        <span>Mediun</span>
+      </label>
+        
+     <input type="submit" [value]="isEdit?'Update':'Submit'" (click)="OnSubmit()">
+     <input type="submit" value="Show all Students" (click)="getAll()">
+    </form>
+</div>
+
+<div class="row g-4 py-5">
+  <div class="col-12 col-md-6 col-lg-4 col-xl-2" *ngFor="let student of students">
+    <div class="card p-3">
+      <p>{{student.roll}}</p>
+      <h3 class="fs-2 text-body-emphasis">{{student.name}}</h3>
+      <h5 class="card-title">{{"Fees: $" + student.fees}}</h5>
+      <p>{{student.medium}}</p>
+      <a class="btn btn-success me-2" (click)="updateStudent(student)">Update</a>
+      <a class="btn btn-danger" (click)="deleteStudent(student.roll)">Delete</a>
+    </div>
+  </div>
+</div>
